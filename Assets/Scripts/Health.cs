@@ -54,9 +54,11 @@ public class Health : MonoBehaviour
 
     public void PickupHealth()
     {
-        currentHealth += 1;
-        DisplayHealth();
-       
+        if (currentHealth < 5)
+        {
+            currentHealth += 1;
+            DisplayHealth();
+        }
     }
 
 

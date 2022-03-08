@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
     WaitForSeconds blinkWait;
 
     public Health healthScript;
+    public TimeManager timerScript;
 
   
 
@@ -53,7 +54,7 @@ public class Inventory : MonoBehaviour
     public void NewEntry(Sprite image, int digestionTime)
     {
         once = false;
-        if (foodList.Count < foodUIs.Length)
+        if (foodList.Count < foodUIs.Length - 1)
         {
             audioSource.clip = audioClips[Random.Range(0, audioClips.Length - 1)];
             audioSource.Play();
@@ -64,6 +65,8 @@ public class Inventory : MonoBehaviour
 
             if (!digesting)
                 StartCoroutine(Digest());
+
+
         }
         
     }
@@ -83,11 +86,8 @@ public class Inventory : MonoBehaviour
 
         for(int i = 0; i < foodList.Count; i++)
         {
-            if (i < foodUIs.Length)
-            {
                 foodUIs[i].GetComponent<Image>().enabled = true;
                 foodUIs[i].GetComponent<Image>().sprite = foodList.ElementAt(i).Item1;
-                                }
         }
         
             
@@ -96,29 +96,29 @@ public class Inventory : MonoBehaviour
  
     IEnumerator Digest()
     {
-        digesting = true;
-       
-        for(int i = 0; i < foodList[0].Item2; i++)
+        if (foodList.Count > 0)
         {
-            foodUIs[0].GetComponent<Image>().enabled = false;
-            yield return blinkWait;
-            foodUIs[0].GetComponent<Image>().enabled = true;
-            yield return blinkWait;
+            digesting = true;
+
+
+            for (int i = 0; i < foodList[0].Item2; i++)
+            {
+                foodUIs[0].GetComponent<Image>().enabled = false;
+                yield return blinkWait;
+                foodUIs[0].GetComponent<Image>().enabled = true;
+                yield return blinkWait;
+            }
+            if (!timerScript.win)
+            {
+                foodList.RemoveAt(0);
+                FillInventory();
+
+                digesting = false;
+
+
+                StartCoroutine(Digest());
+            }
         }
-        
-        foodList.RemoveAt(0);
-        FillInventory();
-        digesting = false;
-        if(foodList.Count < 1)
-        {
-            StartCoroutine(LoseHeart());
-        }
-        else
-        {
-            StopCoroutine(LoseHeart());
-        }
-        
-        StartCoroutine(Digest());
 
     }
 
@@ -128,10 +128,13 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            healthScript.healthIcons[healthScript.healthIcons.Length-1].GetComponent<Image>().enabled = false;
-            yield return blinkWait;
-            healthScript.healthIcons[healthScript.healthIcons.Length-1].GetComponent<Image>().enabled = true;
-            yield return blinkWait;
+            if (foodList.Count < 1)
+            {
+                healthScript.healthIcons[healthScript.healthIcons.Length - 1].GetComponent<Image>().enabled = false;
+                yield return blinkWait;
+                healthScript.healthIcons[healthScript.healthIcons.Length - 1].GetComponent<Image>().enabled = true;
+                yield return blinkWait;
+            }
         }
         if (foodList.Count < 1)
         {
@@ -144,6 +147,7 @@ public class Inventory : MonoBehaviour
 
     public int GetFinalScore()
     {
+        digesting = false;
         StopAllCoroutines();
         int finalScore = 0;
         foreach(System.Tuple<Sprite,int> food in foodList)
@@ -156,6 +160,7 @@ public class Inventory : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", finalScore);
         }
 
+        Debug.Log("foodlist count:  " + foodList.Count);
         return finalScore;
     }
 

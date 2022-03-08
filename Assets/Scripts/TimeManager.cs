@@ -34,7 +34,9 @@ public class TimeManager : MonoBehaviour
 
     LevelGenerator genScript;
     public PlayerController playerScript;
-    public Inventory inventoryScript;    
+    public Inventory inventoryScript;
+
+    public bool win;
 
 
 
@@ -79,7 +81,7 @@ public class TimeManager : MonoBehaviour
                 cam.backgroundColor = summerColor;
                 genScript.SpreadFreshFood(5);
                 genScript.SpreadNuts(5);
-                genScript.SpreadEnemies(10);
+                //genScript.SpreadEnemies(10);
                 StartCoroutine(SeasonInfo());
 
                 break;
@@ -89,7 +91,7 @@ public class TimeManager : MonoBehaviour
                 seasonPanel.GetComponent<Image>().color = fallColor;
                 seasonUI.text = currentSeason;
                 cam.backgroundColor = fallColor;
-                genScript.SpreadEnemies(10);
+                //genScript.SpreadEnemies(10);
                 genScript.SpreadNuts(10);
                 genScript.SpreadGoodies(1);
                 StartCoroutine(SeasonInfo());
@@ -101,11 +103,12 @@ public class TimeManager : MonoBehaviour
                 seasonPanel.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
                 seasonUI.text = currentSeason;
                 cam.backgroundColor = winterColor;
-                genScript.SpreadEnemies(10);
+               // genScript.SpreadEnemies(10);
                 genScript.SpreadGoodies(3);
                 StartCoroutine(SeasonInfo());
                 break;
             case 3:
+                win = true;
                 StopAllCoroutines();
                 Time.timeScale = 0;
                 audioSource.clip = springAmbient;
