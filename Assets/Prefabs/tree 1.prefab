@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5090161177751921115}
   - component: {fileID: 1193566889650681268}
   m_Layer: 0
-  m_Name: tree
+  m_Name: tree 1
   m_TagString: Instance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9120437655914033305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9306, y: 1.9306, z: 1.9306}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 11741a920cd57a442908caa50b847ca3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5610676d0d10247439c1dd5a92256e24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,9 +111,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.96}
+  m_Offset: {x: 0, y: -0.39}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 0.7
 --- !u!50 &5090161177751921115
 Rigidbody2D:
   serializedVersion: 4
@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seasonSprites:
-  - {fileID: 21300000, guid: b9580df303cca7e499384bda3fe82309, type: 3}
-  - {fileID: 21300000, guid: b9580df303cca7e499384bda3fe82309, type: 3}
+  - {fileID: 21300000, guid: cb348f4dc152edc4284621dea9a54526, type: 3}
+  - {fileID: 21300000, guid: 50fab82798705324b9bfa6404f4e7eed, type: 3}

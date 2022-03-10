@@ -22,7 +22,7 @@ public class LevelGenerator : MonoBehaviour
         vegetationInstances = new List<GameObject>();
         SpreadVegetation(30);
         // CheckDistance();
-        SpreadGoodies(5);
+       // SpreadGoodies(5);
        
     }
 
@@ -40,9 +40,12 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void Reposition()
+    public void SetVegetationSeason(int seasonSpriteId)
     {
-       
+        foreach(GameObject vegetation in vegetationInstances)
+        {
+            vegetation.GetComponent<Vegetation>().SetSeasonSprite(seasonSpriteId);
+        }
     }
 
     public void SpreadNuts(int nutNumber)
@@ -67,15 +70,28 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    float randomSize = 0;
+    float randomFlip = 0;
+
     void SpreadVegetation(int vegetationNumber)
     {
 
         for (int i = 0; i < vegetationNumber; i++)
         {
-            var vegetationInst = Instantiate(vegetation[0], new Vector3(Random.Range(-spreadRadius, spreadRadius), Random.Range(-spreadRadius, spreadRadius), 0), Quaternion.identity);
-            vegetationInstances.Add(vegetationInst);
+            randomSize = Random.Range(1.5f, 3);
+            var vegetationInst = Instantiate(vegetation[1], new Vector3(Random.Range(-spreadRadius, spreadRadius), Random.Range(-spreadRadius, spreadRadius), 0), Quaternion.identity);
+            vegetationInst.transform.localScale = new Vector3(randomSize, randomSize, 1);
+            randomFlip = Random.Range(0, 10);
+            Debug.Log(randomFlip);
+            if (randomFlip < 5)
+                vegetationInst.GetComponent<SpriteRenderer>().flipX = false;
+            else
+                vegetationInst.GetComponent<SpriteRenderer>().flipX = true;
+
             
-          }
+            vegetationInstances.Add(vegetationInst);
+
+        }
 
     }
 

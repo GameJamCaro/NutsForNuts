@@ -9,7 +9,7 @@ using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
-    List<System.Tuple<Sprite, int>> foodList;
+    public List<System.Tuple<Sprite, int>> foodList;
 
     public GameObject[] foodUIs;
 

@@ -625,7 +625,7 @@ MonoBehaviour:
   m_text: You dead
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 722bca17d0e25df44add550dc193bbe3, type: 2}
-  m_sharedMaterial: {fileID: 6528413383550014297, guid: 9eccb07928183ac4bb540a60d06cfc31, type: 2}
+  m_sharedMaterial: {fileID: -3991347900897827795, guid: 722bca17d0e25df44add550dc193bbe3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &268020044
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_text: Play again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 722bca17d0e25df44add550dc193bbe3, type: 2}
-  m_sharedMaterial: {fileID: 6528413383550014297, guid: 9eccb07928183ac4bb540a60d06cfc31, type: 2}
+  m_sharedMaterial: {fileID: -3991347900897827795, guid: 722bca17d0e25df44add550dc193bbe3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &657285976
@@ -3723,9 +3723,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.38823533, g: 0.76470596, b: 0.2901961, a: 1}
-    m_HighlightedColor: {r: 0.50980395, g: 0.68235296, b: 0.5254902, a: 1}
-    m_PressedColor: {r: 0.990566, g: 0.6868548, b: 0.8193276, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5566038, g: 0.44895872, b: 0.52155656, a: 1}
+    m_PressedColor: {r: 0.79215693, g: 0.53333336, b: 0.7490196, a: 1}
+    m_SelectedColor: {r: 0.79215693, g: 0.53333336, b: 0.7490196, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3971,11 +3971,11 @@ RectTransform:
   m_Father: {fileID: 388939664}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1058.3225, y: -805.1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 120}
   m_SizeDelta: {x: 250, y: 130}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1174854492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3998,8 +3998,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.38823533, g: 0.76470596, b: 0.2901961, a: 1}
-    m_HighlightedColor: {r: 0.5529412, g: 0.79215693, b: 0.53333336, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.5566038, g: 0.44895872, b: 0.52155656, a: 1}
+    m_PressedColor: {r: 0.79215693, g: 0.53333336, b: 0.7490196, a: 1}
     m_SelectedColor: {r: 0.7921569, g: 0.53333336, b: 0.75087476, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -5483,7 +5483,7 @@ MonoBehaviour:
   - {fileID: 5631548990513165844, guid: dc4ae3c232a5ae24dbeafc5ad96bd1b5, type: 3}
   vegetation:
   - {fileID: 9120437655914033305, guid: 1237c67ea7f6d6f4fae28e5cde3d5035, type: 3}
-  - {fileID: 9120437655914033305, guid: 1237c67ea7f6d6f4fae28e5cde3d5035, type: 3}
+  - {fileID: 9120437655914033305, guid: 54615773ef7c261499147bbca02424ca, type: 3}
   enemies:
   - {fileID: 6361722338308527459, guid: bec68fe3b474e0d47893869f412768c9, type: 3}
   - {fileID: 3435918047381244413, guid: 8ab0801bdb4d2094f890140565687618, type: 3}
@@ -5540,7 +5540,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5954,7 +5954,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.7
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -6250,6 +6250,10 @@ PrefabInstance:
       propertyPath: collectionSound
       value: 
       objectReference: {fileID: 8300000, guid: cabe15963352e424099bf59847fefc73, type: 3}
+    - target: {fileID: 3121420515365260334, guid: 396227cc225cc4a4e821efffc63ea320, type: 3}
+      propertyPath: inventoryScript
+      value: 
+      objectReference: {fileID: 2037729206}
     - target: {fileID: 3121420515365260334, guid: 396227cc225cc4a4e821efffc63ea320, type: 3}
       propertyPath: hurtSounds.Array.size
       value: 4

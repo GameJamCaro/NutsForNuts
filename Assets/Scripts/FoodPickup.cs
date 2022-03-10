@@ -24,7 +24,7 @@ public class FoodPickup : MonoBehaviour
                 once = true;
                 collision.gameObject.GetComponent<PlayerController>().inventoryScript.NewEntry(GetComponent<SpriteRenderer>().sprite, digestionTime);
                 anim.SetTrigger("bounce");
-                Destroy(gameObject, .5f);
+                Destroy(gameObject, .3f);
             }
             
         }

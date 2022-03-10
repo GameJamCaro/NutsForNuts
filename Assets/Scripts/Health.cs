@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Health : MonoBehaviour
     AudioSource audioSource;
     public AudioClip[] hurtSounds;
     public AudioClip collectionSound;
+
+    public Inventory inventoryScript;
 
    
 
@@ -45,12 +48,20 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        audioSource.pitch = .7f;
         audioSource.clip = hurtSounds[Random.Range(0, hurtSounds.Length)];
         audioSource.Play();
         DisplayHealth();
         if(currentHealth < 1)
         {
             deathPanel.SetActive(true);
+            if (inventoryScript.foodList.Count < 1)
+            {
+                deathPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Death by hunger";
+            }
+            else
+                deathPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Death by enemy";
+
             Time.timeScale = 0;
         }
     }
@@ -60,6 +71,7 @@ public class Health : MonoBehaviour
         if (currentHealth < 5)
         {
             audioSource.clip = collectionSound;
+            
             audioSource.Play();
             pickup.GetComponent<SpriteRenderer>().enabled = false;
             currentHealth += 1;

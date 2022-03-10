@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 6 && !once1)
+        if (Vector2.Distance(transform.position, player.transform.position) < 6 && !once1 && !player.GetComponent<PlayerController>().inactive)
         {
             StartCoroutine(WaitAndShoot());
             Debug.Log("Shoot Distance");

@@ -75,6 +75,7 @@ public class TimeManager : MonoBehaviour
         switch(season)
         {
             case 0:
+                
                 currentSeason = "Summer";
                 audioSource.clip = summerAmbient;
                 seasonPanel.GetComponent<Image>().color = summerColor;
@@ -87,6 +88,7 @@ public class TimeManager : MonoBehaviour
 
                 break;
             case 1:
+                genScript.SetVegetationSeason(0);
                 currentSeason = "Fall";
                 audioSource.clip = fallAmbient;
                 seasonPanel.GetComponent<Image>().color = fallColor;
@@ -98,6 +100,7 @@ public class TimeManager : MonoBehaviour
                 StartCoroutine(SeasonInfo());
                 break;
             case 2:
+                genScript.SetVegetationSeason(1);
                 currentSeason = "Winter";
                 audioSource.clip = winterAmbient;
                 seasonPanel.GetComponent<Image>().color = winterColor;
@@ -143,7 +146,7 @@ public class TimeManager : MonoBehaviour
         seasonText.text = currentSeason;
         yield return new WaitForSeconds(1);
         seasonPanel.SetActive(false);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1);
         playerScript.inactive = false;
 
     }
