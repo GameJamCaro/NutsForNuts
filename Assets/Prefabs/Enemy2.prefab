@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5272841651530512152}
   - component: {fileID: 9213903123421137324}
   - component: {fileID: 2540541994871343346}
+  - component: {fileID: 4165112844515376480}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -169,9 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSounds:
-  - {fileID: 8300000, guid: b6d2b51c5edfeb740a01701a50568b2b, type: 3}
-  - {fileID: 8300000, guid: 4e5e529decfa6be45b271c7555fec473, type: 3}
-  - {fileID: 8300000, guid: 5d0d47ae94958f144b1f211eab3f8ff3, type: 3}
+  - {fileID: 8300000, guid: d1f446d51ac0dfa438d177bd08158207, type: 3}
   firePoint: {fileID: 8003567627287223928}
   projectile: {fileID: 9011878306362565286, guid: ec257525c8e7411479da56bf43a061aa, type: 3}
 --- !u!114 &5272841651530512152
@@ -307,3 +306,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4165112844515376480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865531274990527712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd12c3e09e438e44807cc81c2cacc2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

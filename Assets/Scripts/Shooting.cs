@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public float fireRate = 0;
+    public bool highFireRate;
     public float pickUpFireRate = 10;
     public float damage = 10;
     public LayerMask whatToHit;
@@ -78,7 +79,9 @@ public class Shooting : MonoBehaviour
     private IEnumerator FireRateTimer()
     {
         fireRate = pickUpFireRate;
+        highFireRate = true;
         yield return new WaitForSeconds(10);
         fireRate = 0;
+        highFireRate = false;
     }
 }

@@ -10,8 +10,11 @@ public class Health : MonoBehaviour
     public GameObject deathPanel;
     AudioSource audioSource;
     public AudioClip[] hurtSounds;
-  
-    
+    public AudioClip collectionSound;
+
+   
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,12 +55,16 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void PickupHealth()
+    public void PickupHealth(GameObject pickup)
     {
         if (currentHealth < 5)
         {
+            audioSource.clip = collectionSound;
+            audioSource.Play();
+            pickup.GetComponent<SpriteRenderer>().enabled = false;
             currentHealth += 1;
             DisplayHealth();
+            Destroy(pickup, 2);
         }
     }
 

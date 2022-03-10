@@ -8,6 +8,7 @@ TagManager:
   - UI
   - Enemy
   - Projectile
+  - Instance
   layers:
   - Default
   - TransparentFX

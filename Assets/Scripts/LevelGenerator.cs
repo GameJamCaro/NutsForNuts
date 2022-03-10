@@ -10,6 +10,8 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] enemies;
     public GameObject[] goodies;
 
+    List<GameObject> vegetationInstances;
+
     
 
     public int spreadRadius;
@@ -17,11 +19,31 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpreadVegetation(20);
+        vegetationInstances = new List<GameObject>();
+        SpreadVegetation(30);
+        // CheckDistance();
+        SpreadGoodies(5);
        
     }
 
-    
+    public void CheckDistance()
+    {
+        for(int i = 0; i < vegetationInstances.Count-2; i++)
+        {
+           // Debug.Log(Vector2.Distance(vegetationInstances[i].transform.position, vegetationInstances[i + 1].transform.position));
+            if(Vector2.Distance(vegetationInstances[i].transform.position, vegetationInstances[i+1].transform.position) < 20)
+            {
+                vegetationInstances[i].transform.position = new Vector3(Random.Range(-spreadRadius, spreadRadius), Random.Range(-spreadRadius, spreadRadius), 0);
+                Debug.Log("Reposition");
+                CheckDistance();
+            }
+        }
+    }
+
+    void Reposition()
+    {
+       
+    }
 
     public void SpreadNuts(int nutNumber)
     {
@@ -50,10 +72,14 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < vegetationNumber; i++)
         {
-            Instantiate(vegetation[0], new Vector3(Random.Range(-spreadRadius, spreadRadius), Random.Range(-spreadRadius, spreadRadius), 0), Quaternion.identity);
-        }
+            var vegetationInst = Instantiate(vegetation[0], new Vector3(Random.Range(-spreadRadius, spreadRadius), Random.Range(-spreadRadius, spreadRadius), 0), Quaternion.identity);
+            vegetationInstances.Add(vegetationInst);
+            
+          }
 
     }
+
+   
 
 
     public void SpreadEnemies(int enemyNumber)

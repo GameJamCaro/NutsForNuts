@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [Range(0, 10)]
     public float startSpeed;
     public float speedUpSpeed;
+    public bool speeding;
 
     public Texture2D reticle;
 
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector3.zero;
+           // rb.velocity = Vector3.zero;
         }
     }
 
@@ -95,8 +96,10 @@ public class PlayerController : MonoBehaviour
     IEnumerator SpeedUpTimer()
     {
         playerSpeed = speedUpSpeed;
+        speeding = true;
         yield return new WaitForSeconds(speedUpTime);
         playerSpeed = startSpeed;
+        speeding = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

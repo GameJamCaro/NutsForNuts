@@ -49,7 +49,8 @@ public class Enemy : MonoBehaviour
         if(collision.CompareTag("Projectile") && !once)
         {
             once = true;
-           // GameManager.AddScore(1);
+            // GameManager.AddScore(1);
+            GetComponent<SpriteRenderer>().enabled = false;
             audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
             audioSource.Play();
             Destroy(gameObject,.5f);

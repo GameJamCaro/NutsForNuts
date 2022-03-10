@@ -49,12 +49,17 @@ public class Inventory : MonoBehaviour
             StartCoroutine(LoseHeart());
             once = true;
         }
+
+        if(timerScript.win)
+        {
+            FillInventory();
+        }
     }
 
     public void NewEntry(Sprite image, int digestionTime)
     {
         once = false;
-        if (foodList.Count < foodUIs.Length - 1)
+        if (foodList.Count < foodUIs.Length)
         {
             audioSource.clip = audioClips[Random.Range(0, audioClips.Length - 1)];
             audioSource.Play();
