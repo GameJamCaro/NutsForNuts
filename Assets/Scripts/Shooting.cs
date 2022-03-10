@@ -60,15 +60,8 @@ public class Shooting : MonoBehaviour
         Vector3 firePointPosition = new Vector3(firePoint.transform.position.x, firePoint.transform.position.y,0);
         GameObject projectileInst = Instantiate(projectile, firePoint.transform.position, Quaternion.identity);
         projectileInst.GetComponent<Rigidbody2D>().AddForce(firePoint.transform.up * force, ForceMode2D.Impulse);
-        Destroy(projectileInst, 1);
-        /*
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition-firePointPosition, 100);
-        Debug.DrawLine(firePointPosition, (mousePosition - firePointPosition) * 100, Color.cyan);
-        if (hit.collider != null)
-        {
-            Debug.DrawLine(firePointPosition, hit.point, Color.red);
-        }
-        */
+        Destroy(projectileInst, .7f);
+        
     }
 
     public void PickupFireRate()

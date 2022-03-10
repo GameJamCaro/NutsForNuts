@@ -19,7 +19,7 @@ public class FoodPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !once)
         {
-            if (!collision.GetComponent<PlayerController>().inactive)
+            if (true)
             {
                 once = true;
                 collision.gameObject.GetComponent<PlayerController>().inventoryScript.NewEntry(GetComponent<SpriteRenderer>().sprite, digestionTime);

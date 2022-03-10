@@ -81,9 +81,9 @@ public class TimeManager : MonoBehaviour
                 seasonPanel.GetComponent<Image>().color = summerColor;
                 seasonUI.text = currentSeason;
                 cam.backgroundColor = summerColor;
-                genScript.SpreadFreshFood(5);
+                genScript.SpreadFreshFood(7);
                 genScript.SpreadNuts(5);
-                genScript.SpreadEnemies(10);
+                genScript.SpreadEnemies(13);
                 StartCoroutine(SeasonInfo());
 
                 break;
@@ -96,7 +96,7 @@ public class TimeManager : MonoBehaviour
                 cam.backgroundColor = fallColor;
                 genScript.SpreadEnemies(10);
                 genScript.SpreadNuts(30);
-                genScript.SpreadGoodies(1);
+                genScript.SpreadGoodies(2);
                 StartCoroutine(SeasonInfo());
                 break;
             case 2:
@@ -108,7 +108,7 @@ public class TimeManager : MonoBehaviour
                 seasonUI.text = currentSeason;
                 cam.backgroundColor = winterColor;
                 genScript.SpreadEnemies(10);
-                genScript.SpreadGoodies(3);
+                genScript.SpreadGoodies(4);
                 StartCoroutine(SeasonInfo());
                 break;
             case 3:

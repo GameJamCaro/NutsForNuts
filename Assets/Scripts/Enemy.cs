@@ -12,11 +12,17 @@ public class Enemy : MonoBehaviour
     public GameObject projectile;
     int force = 5;
 
+    bool shooting;
+    Vector3 startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = transform.position;
         audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(WaitBeforeShooting());
+        
     }
 
 
@@ -24,7 +30,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 6 && !once1 && !player.GetComponent<PlayerController>().inactive)
+        if (Vector2.Distance(startPosition, player.transform.position) < 10 && !once1 && !player.GetComponent<PlayerController>().inactive && shooting)
         {
             StartCoroutine(WaitAndShoot());
             Debug.Log("Shoot Distance");
@@ -53,7 +59,7 @@ public class Enemy : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
             audioSource.Play();
-            Destroy(gameObject,.5f);
+            Destroy(gameObject,1);
 
         }
     }
@@ -65,7 +71,7 @@ public class Enemy : MonoBehaviour
         var bullet = Instantiate(projectile, firePoint.transform.position, Quaternion.identity);
         Debug.Log(bullet.transform);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.transform.forward * force, ForceMode2D.Impulse);
-        Destroy(bullet, 2);
+        Destroy(bullet, 1);
     }
 
     IEnumerator WaitAndShoot()
@@ -73,5 +79,13 @@ public class Enemy : MonoBehaviour
         Shoot();
         yield return new WaitForSeconds(1);
         StartCoroutine(WaitAndShoot());
+    }
+
+
+    IEnumerator WaitBeforeShooting()
+    {
+        yield return new WaitForSeconds(2);
+        shooting = true;
+
     }
 }

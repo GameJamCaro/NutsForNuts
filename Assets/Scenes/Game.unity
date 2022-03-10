@@ -5540,7 +5540,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5937,7 +5937,6 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 1aad2dcd90542f74580e283969b6f3a1, type: 3}
   - {fileID: 8300000, guid: 1eb635557b47ca7488a0cff10cf4e0fc, type: 3}
-  - {fileID: 8300000, guid: afe1eaa2b4b83eb44a126acad7018c31, type: 3}
   - {fileID: 8300000, guid: 4adcfaeb800295f49bac3c2a5ecdf6db, type: 3}
   healthScript: {fileID: 1870207169}
   timerScript: {fileID: 1931143629}
@@ -6208,7 +6207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121420515365260332, guid: 396227cc225cc4a4e821efffc63ea320, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3121420515365260332, guid: 396227cc225cc4a4e821efffc63ea320, type: 3}
       propertyPath: m_LocalPosition.z
