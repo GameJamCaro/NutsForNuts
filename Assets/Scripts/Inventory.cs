@@ -44,15 +44,20 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         // if there is no food left, player begins to lose health
-        if(foodList.Count < 1 && !once)
+        if (foodList.Count < 1 && !once)
         {
             StartCoroutine(LoseHeart());
             once = true;
         }
 
-        if(timerScript.win)
+        if (timerScript.win)
         {
+
             FillInventory();
+            if (timerScript.win)
+            {
+                foodUIs[0].GetComponent<Image>().enabled = true;
+            }
         }
     }
 
@@ -82,6 +87,7 @@ public class Inventory : MonoBehaviour
         foreach (GameObject ui in foodUIs)
         {
             ui.GetComponent<Image>().enabled = false;
+            ui.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
     }
 
@@ -94,24 +100,43 @@ public class Inventory : MonoBehaviour
                 foodUIs[i].GetComponent<Image>().enabled = true;
                 foodUIs[i].GetComponent<Image>().sprite = foodList.ElementAt(i).Item1;
         }
-        
+        ShowPoints();
             
     }
 
- 
+    public void ShowPoints()
+    {
+        for (int i = 0; i < foodList.Count; i++)
+        {
+            
+            foodUIs[i].GetComponentInChildren<TextMeshProUGUI>().text = foodList.ElementAt(i).Item2.ToString();
+        }
+    }
+
+
+    public int digestCounter;
     IEnumerator Digest()
     {
         if (foodList.Count > 0)
         {
             digesting = true;
+           
 
 
-            for (int i = 0; i < foodList[0].Item2; i++)
+            digestCounter = foodList[0].Item2;
+            for (int i = digestCounter; i > 0; i--)
             {
-                foodUIs[0].GetComponent<Image>().enabled = false;
-                yield return blinkWait;
-                foodUIs[0].GetComponent<Image>().enabled = true;
-                yield return blinkWait;
+                if (!timerScript.win)
+                {
+                    foodUIs[0].GetComponentInChildren<TextMeshProUGUI>().text = i.ToString();
+                    foodUIs[0].GetComponent<Image>().enabled = false;
+                    yield return blinkWait;
+                    foodUIs[0].GetComponent<Image>().enabled = true;
+                    yield return blinkWait;
+                }
+                else
+                    foodUIs[0].GetComponent<Image>().enabled = true;
+
             }
             if (!timerScript.win)
             {
@@ -143,7 +168,7 @@ public class Inventory : MonoBehaviour
         }
         if (foodList.Count < 1)
         {
-            healthScript.TakeDamage(1);
+            healthScript.TakeDamage(1,0);
             StartCoroutine(LoseHeart());
         }
 

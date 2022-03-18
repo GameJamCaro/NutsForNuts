@@ -66,7 +66,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < freshFoodNumber; i++)
         {
             var veg = Instantiate(freshFood[Random.Range(0, freshFood.Length - 1)], new Vector3(Random.Range(-spreadRadius, spreadRadius), Random.Range(-spreadRadius, spreadRadius), 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
-            Destroy(veg, Random.Range(8,12));
+            Destroy(veg, Random.Range(15,20));
         }
     }
 

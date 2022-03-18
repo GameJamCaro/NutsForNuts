@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") && !inactive)
         {
-            GetComponent<Health>().TakeDamage(1);
+            GetComponent<Health>().TakeDamage(1,1);
             Destroy(collision.gameObject);
         }
     }

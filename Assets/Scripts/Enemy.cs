@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform firePoint;
     GameObject player;
     public GameObject projectile;
-    int force = 5;
+    int force = 6;
 
     bool shooting;
     Vector3 startPosition;
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(startPosition, player.transform.position) < 10 && !once1 && !player.GetComponent<PlayerController>().inactive && shooting)
+        if (Vector2.Distance(startPosition, player.transform.position) < 9 && !once1 && !player.GetComponent<PlayerController>().inactive && shooting)
         {
             StartCoroutine(WaitAndShoot());
             Debug.Log("Shoot Distance");
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             StopCoroutine(WaitAndShoot());
     }
 
-    bool once;
+    bool dead;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -52,9 +52,9 @@ public class Enemy : MonoBehaviour
 
         }
         */
-        if(collision.CompareTag("Projectile") && !once)
+        if(collision.CompareTag("Projectile") && !dead)
         {
-            once = true;
+            dead = true;
             // GameManager.AddScore(1);
             GetComponent<SpriteRenderer>().enabled = false;
             audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
@@ -71,14 +71,15 @@ public class Enemy : MonoBehaviour
         var bullet = Instantiate(projectile, firePoint.transform.position, Quaternion.identity);
         Debug.Log(bullet.transform);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.transform.forward * force, ForceMode2D.Impulse);
-        Destroy(bullet, 1);
+        Destroy(bullet, 1.5f);
     }
 
     IEnumerator WaitAndShoot()
     {
         Shoot();
         yield return new WaitForSeconds(1);
-        StartCoroutine(WaitAndShoot());
+        if(!dead)
+            StartCoroutine(WaitAndShoot());
     }
 
 

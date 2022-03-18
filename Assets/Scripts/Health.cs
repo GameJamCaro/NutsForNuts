@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int damageID)
     {
         currentHealth -= damage;
         audioSource.pitch = .7f;
@@ -55,11 +55,11 @@ public class Health : MonoBehaviour
         if(currentHealth < 1)
         {
             deathPanel.SetActive(true);
-            if (inventoryScript.foodList.Count < 1)
+            if (inventoryScript.foodList.Count < 1 && damageID == 0)
             {
                 deathPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Death by hunger";
             }
-            else
+            else 
                 deathPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Death by enemy";
 
             Time.timeScale = 0;
